@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows-like Interface</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-image: url('win7.png');
+            background-size: cover;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        #taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        #window {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 300px;
+            background-color: white;
+            border: 2px solid #0078d7;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            overflow-y: auto;
+            z-index: 10;
+        }
+
+        #close-button {
+            cursor: pointer;
+            color: #0078d7;
+            text-align: right;
+            font-size: 20px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        #desktop {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 40px); /* Account for the taskbar height */
+            display: flex;
+            justify-content: flex-start; /* Align items to the left */
+            align-items: flex-start; /* Align items to the top */
+            padding: 10px; /* Add some padding */
+        }
+
+        .desktop-icon {
+            text-align: center;
+            margin: 10px;
+            cursor: default; /* Change cursor to default since it's not functional */
+        }
+
+        .desktop-icon img {
+            width: 60px;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div id="desktop">
+        <div class="desktop-icon" id="slever-icon">
+            <img src="Sleverico.png" alt="Slever Icon">
+            <div>Slever</div>
+        </div>
+        <div class="desktop-icon" id="firefox-icon">
+            <img src="FireFox.png" alt="Firefox Icon">
+            <div>Firefox</div>
+        </div>
+        <div class="desktop-icon" id="discord-icon">
+            <img src="Discord.png" alt="Discord Icon">
+            <div>Discord</div>
+        </div>
+    </div>
+
+    <div id="taskbar">
+        <button id="win-button">
+            <img src="win10button.png" class="icon" alt="Windows Button"> 
+        </button>
+        <button id="slever-button">
+            <img src="Sleverico.png" class="icon" alt="Slever Icon"> 
+        </button>
+    </div>
+
+    <div id="window">
+        <span id="close-button">&times;</span>
+        <h2>Slever</h2>
+        <p>Slever has 2 things: SleverOS and SleverTweaks, both are good.</p>
+        <h3>SleverTweaks Pricing:</h3>
+        <ul>
+            <li>Bronze: Free</li>
+            <li>Silver: 9.99€</li>
+            <li>Gold: 19.99€</li>
+        </ul>
+        <h3>SleverOS:</h3>
+        <p>Free and powered by Windows 11.</p>
+    </div>
+
+    <script>
+        const sleverButton = document.getElementById('slever-button');
+        const windowElement = document.getElementById('window');
+        const closeButton = document.getElementById('close-button');
+
+        sleverButton.addEventListener('click', () => {
+            windowElement.style.display = 'block';
+        });
+
+        closeButton.addEventListener('click', () => {
+            windowElement.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
