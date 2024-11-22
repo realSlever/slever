@@ -6,88 +6,114 @@
 <title>Slever</title>
 <style>
     body {
-        font-family: Arial, sans-serif;
-        color: white;
+        font-family: 'Roboto', sans-serif;
         margin: 0;
         padding: 0;
-        transition: background 0.8s ease; /* Smooth background color transition */
+        color: white;
+        background: linear-gradient(135deg, #003366, #1f4265); /* Initial gradient background */
+        transition: background 0.8s ease; /* Smooth transition for background */
     }
 
-    /* Section container styling for scrolling effect */
+    /* Add a smooth scrolling effect */
+    html {
+        scroll-behavior: smooth;
+    }
+
     .section {
         height: 100vh; /* Full viewport height for forced scrolling */
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
+        padding: 0 20px;
     }
 
     /* Title section */
     .title-section {
-        background: linear-gradient(135deg, #001f3f, #003366);
+        background: linear-gradient(135deg, #003366, #1f4265);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Glossy effect */
+        border-radius: 10px;
+        padding: 50px 20px;
+        text-align: center;
     }
 
     .title {
-        font-size: 4em; /* Increased font size */
+        font-size: 5em;
         font-weight: bold;
-        margin-bottom: 10px; /* Margin to create space for the caption */
+        text-transform: uppercase;
+        color: white;
+        letter-spacing: 5px;
+        margin-bottom: 20px;
     }
 
     .subtitle {
-        font-size: 1.5em;
+        font-size: 1.8em;
         color: #80dfff;
+        font-style: italic;
     }
 
-    /* Q&A section */
+    /* Q&A Section */
     .qa-section {
-        background: linear-gradient(135deg, #003366, #004080);
-        padding: 20px;
+        background: linear-gradient(135deg, #1f4265, #4f5b74);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Glossy effect */
+        border-radius: 10px;
+        padding: 40px 20px;
     }
 
     .question {
         font-weight: bold;
-        margin-top: 20px;
         color: #80dfff;
-        text-align: left; /* Align questions to the left */
+        font-size: 1.5em;
+        margin: 20px 0;
     }
 
     .answer {
-        margin-left: 20px; /* Indent answers */
-        margin-bottom: 20px; /* Space between answers */
-        color: #e0e0e0; /* Slightly lighter color for answers */
+        color: #f1f1f1;
+        font-size: 1.2em;
+        margin-left: 20px;
+        text-align: left;
     }
 
-    /* Image section */
+    /* Image Section */
     .image-section {
-        background: linear-gradient(135deg, #001f3f, #003366); /* Changed from purple to dark blue */
+        background: linear-gradient(135deg, #003366, #1f4265);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Glossy effect */
+        padding: 40px 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
+        border-radius: 10px;
     }
 
     .image-section img {
         width: 100%;
-        max-width: 400px;
-        margin: 20px 0;
+        max-width: 500px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+    }
+
+    .image-section img:hover {
+        transform: scale(1.05);
     }
 
     .caption {
         font-size: 1.2em;
         color: #80dfff;
-        position: relative; /* Position relative for the link */
+        margin-top: 10px;
     }
 
-    /* Join Discord Link */
+    /* Discord link */
     .discord-link {
         color: #80dfff;
         text-decoration: underline;
         cursor: pointer;
-        margin-left: 10px; /* Margin for spacing */
     }
 
     .discord-link:hover {
-        color: #00ff80; /* Change color on hover */
+        color: #00ff80;
     }
+
 </style>
 </head>
 <body>
@@ -95,7 +121,7 @@
     <div class="section title-section">
         <div>
             <div class="title">Slever</div>
-            <div class="subtitle">an non-profit tweak app and operating system</div>
+            <div class="subtitle">an open-source tweak app and operating system</div>
         </div>
     </div>
 
@@ -132,18 +158,23 @@
     </div>
 
     <script>
-        // Change body background color based on scroll position for smooth transition
-        window.addEventListener('scroll', () => {
+        // Smooth background color transition on scroll
+        window.addEventListener('scroll', function () {
             const scrollY = window.scrollY;
-            const body = document.body;
-            
-            if (scrollY < window.innerHeight) {
-                body.style.background = 'linear-gradient(135deg, #001f3f, #003366)';
-            } else if (scrollY >= window.innerHeight && scrollY < window.innerHeight * 2) {
-                body.style.background = 'linear-gradient(135deg, #003366, #004080)';
-            } else if (scrollY >= window.innerHeight * 2 && scrollY < window.innerHeight * 3) {
-                body.style.background = 'linear-gradient(135deg, #001f3f, #003366)'; // Changed from purple to dark blue
-            }
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollRatio = scrollY / docHeight;
+
+            // Gradually change the background gradient from lighter to darker
+            const startColor = { r: 0, g: 51, b: 102 }; // Initial color (light blue)
+            const endColor = { r: 31, g: 66, b: 101 }; // Darker color when scrolled
+
+            // Calculate the new color based on scroll position
+            const r = Math.round(startColor.r + (endColor.r - startColor.r) * scrollRatio);
+            const g = Math.round(startColor.g + (endColor.g - startColor.g) * scrollRatio);
+            const b = Math.round(startColor.b + (endColor.b - startColor.b) * scrollRatio);
+
+            // Apply the new background gradient dynamically
+            document.body.style.background = `linear-gradient(135deg, rgb(${r}, ${g}, ${b}), rgb(${r - 30}, ${g - 10}, ${b - 10}))`;
         });
     </script>
 </body>
