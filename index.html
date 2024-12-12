@@ -6,7 +6,7 @@
 <title>Slever</title>
 <style>
     body {
-        font-family: 'Roboto', sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; /* Apple-like font */
         margin: 0;
         padding: 0;
         color: white;
@@ -43,13 +43,32 @@
         text-transform: uppercase;
         color: white;
         letter-spacing: 5px;
-        margin-bottom: 20px;
+        margin-bottom: 0; /* Remove the space */
     }
 
     .subtitle {
         font-size: 1.8em;
         color: #80dfff;
         font-style: italic;
+        margin-top: 0; /* Remove the space */
+    }
+
+    /* Button styles */
+    .button {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 1.2em;
+        color: white;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 30px;
+        margin-top: 20px;
+        text-decoration: none;
+        text-align: center;
+        transition: background 0.3s ease;
+    }
+
+    .button:hover {
+        background: rgba(255, 255, 255, 0.4);
     }
 
     /* Q&A Section */
@@ -122,6 +141,9 @@
         <div>
             <div class="title">Slever</div>
             <div class="subtitle">an open-source tweak app and operating system</div>
+            <!-- Buttons for redirection -->
+            <a href="window.html" class="button">Click to Explore SleverOS</a>
+            <a href="Tweaks.html" class="button">Explore SleverTweaks</a>
         </div>
     </div>
 
