@@ -11,7 +11,7 @@
             background-image: url('win7.png');
             background-size: cover;
             overflow: hidden;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         #taskbar {
@@ -20,18 +20,24 @@
             left: 0;
             right: 0;
             height: 40px;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: #333;
             display: flex;
             align-items: center;
             padding: 0 10px;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+            z-index: 100;
+        }
+
+        #win-button, #slever-button {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
         }
 
         .icon {
             width: 30px;
             height: 30px;
-            margin-right: 10px;
-            cursor: pointer;
         }
 
         #window {
@@ -48,16 +54,25 @@
             padding: 20px;
             overflow-y: auto;
             z-index: 10;
+            border-radius: 10px;
+        }
+
+        #window .window-header {
+            background-color: #0078d7;
+            color: white;
+            padding: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         #close-button {
             cursor: pointer;
-            color: #0078d7;
-            text-align: right;
+            color: white;
             font-size: 20px;
-            position: absolute;
-            top: 10px;
-            right: 10px;
         }
 
         #desktop {
@@ -73,13 +88,27 @@
         .desktop-icon {
             text-align: center;
             margin: 10px;
-            cursor: default; /* Change cursor to default since it's not functional */
+            cursor: pointer;
         }
 
         .desktop-icon img {
             width: 60px;
             height: 60px;
+            transition: transform 0.2s ease;
         }
+
+        .desktop-icon img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Taskbar Icons Styling */
+        #taskbar button {
+            margin-right: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
     </style>
 </head>
 <body>
@@ -108,17 +137,20 @@
     </div>
 
     <div id="window">
-        <span id="close-button">&times;</span>
+        <div class="window-header">
+            <span>Slever</span>
+            <span id="close-button">&times;</span>
+        </div>
         <h2>Slever</h2>
-        <p>Slever has 2 things: SleverOS and SleverTweaks, both are good.</p>
-        <h3>SleverTweaks Pricing:</h3>
+        <p>SleverOS is an Privacy focused OS wich highly isnt made for gaming,</p>
+        <h3>its meant for:</h3>
         <ul>
-            <li>Bronze: Free</li>
-            <li>Silver: 9.99€</li>
-            <li>Gold: 19.99€</li>
+            <li>Work</li>
+            <li>All day things</li>
+            <li>Other things</li>
         </ul>
-        <h3>SleverOS:</h3>
-        <p>Free and powered by Windows 11.</p>
+        <h3>SleverOS is Free and powered by Windows 11 and 10.</h3>
+        <p>Stay tuned for more updates <3</p>
     </div>
 
     <script>
