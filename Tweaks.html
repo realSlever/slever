@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slever CMD</title>
+<style>
+    body {
+        font-family: 'Courier New', Courier, monospace;
+        background-color: black;
+        color: blue;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    /* Fullscreen background and image */
+    .image-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .image-container img {
+        width: 80%; /* Adjust size */
+        max-width: 1000px;
+        border: 2px solid #F0FFFF;
+        border-radius: 5px;
+    }
+
+    /* Simulate CMD style */
+    .cmd-container {
+        margin-top: 30px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .cmd-line {
+        background-color: black;
+        color: blue;
+        border: none;
+        font-size: 1.2em;
+        padding: 10px;
+        width: 90%;
+        max-width: 600px;
+        margin-top: 10px;
+        text-align: left;
+        border-radius: 5px;
+    }
+
+    .cmd-line:focus {
+        outline: none;
+    }
+
+    .output-text {
+        margin-top: 20px;
+        font-size: 1.2em;
+        color: blue;
+        display: none; /* Hidden by default */
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+
+<!-- Image Section -->
+<div class="image-container">
+    <img src="Sleva.png" alt="Slever Image">
+</div>
+
+<!-- CMD Simulation -->
+<div class="cmd-container">
+    <div>Type "explore" and press Enter:</div>
+    <input id="cmd-input" class="cmd-line" type="text" placeholder="C:\Users\user>" autofocus />
+    <div id="output" class="output-text"></div>
+</div>
+
+<script>
+    document.getElementById("cmd-input").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            const inputText = event.target.value.trim().toLowerCase();
+            
+            if (inputText === "explore") {
+                document.getElementById("output").innerText = 
+                    "SleverTweaks is a free non-profit Open-Source safe Tweaking app made for All Kinds of PC. From Low End to High End. Try it out in the Future! (eta: early 2025)";
+                document.getElementById("output").style.display = "block";
+            } else if (inputText === "discord") {
+                window.location.href = "https://discord.gg/Mmz5XeKcq4"; // Redirect to Discord
+            } else if (inputText === "back") {
+                window.location.href = "index.html"; // Redirect to index.html
+            } else if (inputText === "easter in the egg" || inputText === "abcdefgeasterintheegg2025" || inputText === "release2025") {
+                document.getElementById("output").innerText = 
+                    "You found a very secret hidden Easter Egg! I'm very proud of you! Type in Discord to join our Discord and send this proof that you found it! But shh, don't tell them the secret code.";
+                document.getElementById("output").style.display = "block";
+            } else {
+                document.getElementById("output").innerText = "Unknown command.";
+                document.getElementById("output").style.display = "block";
+            }
+            
+            event.target.value = '';  // Clear the input after command
+        }
+    });
+</script>
+
+</body>
+</html>
