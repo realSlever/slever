@@ -1,203 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Slever</title>
-<style>
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; /* Apple-like font */
-        margin: 0;
-        padding: 0;
-        color: white;
-        background: linear-gradient(135deg, #003366, #1f4265); /* Initial gradient background */
-        transition: background 0.8s ease; /* Smooth transition for background */
-    }
-
-    /* Add a smooth scrolling effect */
-    html {
-        scroll-behavior: smooth;
-    }
-
-    .section {
-        height: 100vh; /* Full viewport height for forced scrolling */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 0 20px;
-    }
-
-    /* Title section */
-    .title-section {
-        background: linear-gradient(135deg, #003366, #1f4265);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Glossy effect */
-        border-radius: 10px;
-        padding: 50px 20px;
-        text-align: center;
-    }
-
-    .title {
-        font-size: 5em;
-        font-weight: bold;
-        text-transform: uppercase;
-        color: white;
-        letter-spacing: 5px;
-        margin-bottom: 0; /* Remove the space */
-    }
-
-    .subtitle {
-        font-size: 1.8em;
-        color: #80dfff;
-        font-style: italic;
-        margin-top: 0; /* Remove the space */
-    }
-
-    /* Button styles */
-    .button {
-        display: inline-block;
-        padding: 15px 30px;
-        font-size: 1.2em;
-        color: white;
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 30px;
-        margin-top: 20px;
-        text-decoration: none;
-        text-align: center;
-        transition: background 0.3s ease;
-    }
-
-    .button:hover {
-        background: rgba(255, 255, 255, 0.4);
-    }
-
-    /* Q&A Section */
-    .qa-section {
-        background: linear-gradient(135deg, #1f4265, #4f5b74);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Glossy effect */
-        border-radius: 10px;
-        padding: 40px 20px;
-    }
-
-    .question {
-        font-weight: bold;
-        color: #80dfff;
-        font-size: 1.5em;
-        margin: 20px 0;
-    }
-
-    .answer {
-        color: #f1f1f1;
-        font-size: 1.2em;
-        margin-left: 20px;
-        text-align: left;
-    }
-
-    /* Image Section */
-    .image-section {
-        background: linear-gradient(135deg, #003366, #1f4265);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Glossy effect */
-        padding: 40px 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border-radius: 10px;
-    }
-
-    .image-section img {
-        width: 100%;
-        max-width: 500px;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        transition: transform 0.3s ease;
-    }
-
-    .image-section img:hover {
-        transform: scale(1.05);
-    }
-
-    .caption {
-        font-size: 1.2em;
-        color: #80dfff;
-        margin-top: 10px;
-    }
-
-    /* Discord link */
-    .discord-link {
-        color: #80dfff;
-        text-decoration: underline;
-        cursor: pointer;
-    }
-
-    .discord-link:hover {
-        color: #00ff80;
-    }
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slever</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+        }
+        #content {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .text {
+            font-size: 50px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            position: relative;
+        }
+        #timer {
+            margin-top: 20px;
+            font-size: 30px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background-color: black;
+            color: white;
+            border: 2px solid white;
+            cursor: pointer;
+            font-size: 18px;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+            display: none;
+        }
+        .button:hover {
+            background-color: white;
+            color: black;
+        }
+    </style>
 </head>
 <body>
-    <!-- Title Section -->
-    <div class="section title-section">
-        <div>
-            <div class="title">Slever</div>
-            <div class="subtitle">an open-source tweak app and operating system</div>
-            <!-- Buttons for redirection -->
-            <a href="window.html" class="button">Click to Explore SleverOS</a>
-            <a href="Tweaks.html" class="button">Explore SleverTweaks</a>
-        </div>
-    </div>
 
-    <!-- Q&A Section -->
-    <div class="section qa-section">
-        <div>
-            <div class="question">Q: What happened to Prices?</div>
-            <div class="answer">A: Slever is now a non-profit app and open-source by local_ratt.</div>
+<div id="content">
+    <div id="text1" class="text">Look at your PC</div>
+    <div id="text2" class="text" style="display: none;">Low FPS, High Delay?, Bad Ping?</div>
+    <div id="text3" class="text" style="display: none;">Are you Poor too and cant afford an new PC or Tweaks?</div>
+    <div id="text4" class="text" style="display: none;">Slever.</div>
+    <div id="text5" class="text" style="display: none;">SleverOS and SleverTweaks</div>
+    <div id="timer" style="display: none;"></div>
+    <button class="button" id="redirectBtn" onclick="window.location.href='index.html'">Want to check the Site?</button>
+</div>
 
-            <div class="question">Q: What about SleverOS?</div>
-            <div class="answer">A: SleverOS is still here! Voided will be working on SleverOS.</div>
+<audio id="backgroundMusic" loop autoplay>
+    <source src="epicmusic.mp3" type="audio/mp3">
+    <source src="epicmusic.ogg" type="audio/ogg">
+    Your browser does not support the audio element.
+</audio>
 
-            <div class="question">Q: I thought it's a solo project?</div>
-            <div class="answer">A: It still is, kinda. Both are different projects by different owners and developers. SleverTweaks is by local_ratt and SleverOS is by voided, so they're still different.</div>
+<script>
+// Play background music and loop it
+document.getElementById('backgroundMusic').play();
 
-            <div class="question">Q: When is the release date?</div>
-            <div class="answer">A: When SleverTweaks is released, SleverOS will be released 2 months after, just like updates, except for bug fixes.</div>
-        </div>
-    </div>
+// Function to fade in text with a given id
+function fadeIn(elementId, delay) {
+    setTimeout(() => {
+        const element = document.getElementById(elementId);
+        element.style.display = 'block';
+        setTimeout(() => {
+            element.style.opacity = 1;
+        }, 100);
+    }, delay);
+}
 
-    <!-- Image Section -->
-    <div class="section image-section">
-        <div>
-            <img src="pic.png" alt="SleverTweaks">
-            <div class="caption">SleverTweaks - made by local_ratt
-                <span class="discord-link" onclick="window.open('https://discord.gg/Mmz5XeKcq4', '_blank')">Join Discord</span>
-            </div>
+// Function to fade out text with a given id
+function fadeOut(elementId, delay) {
+    setTimeout(() => {
+        const element = document.getElementById(elementId);
+        element.style.opacity = 0;
+        setTimeout(() => {
+            element.style.display = 'none';
+        }, 1000);
+    }, delay);
+}
 
-            <img src="pic2.png" alt="SleverOS">
-            <div class="caption">SleverOS - made by voided
-                <span class="discord-link" onclick="window.open('https://discord.gg/Mmz5XeKcq4', '_blank')">Join Discord</span>
-            </div>
-        </div>
-    </div>
+// Delay the first transition (black screen to text)
+setTimeout(() => {
+    document.getElementById('content').style.opacity = 1;
+    fadeIn('text1', 2000);
+}, 2000);
 
-    <script>
-        // Smooth background color transition on scroll
-        window.addEventListener('scroll', function () {
-            const scrollY = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollRatio = scrollY / docHeight;
+// Transition from "Look at your PC" to "Low FPS, High Delay?, Bad Ping?"
+setTimeout(() => {
+    fadeOut('text1', 4000);
+    setTimeout(() => fadeIn('text2', 6000), 2000); // 2 seconds cooldown
+}, 4000);
 
-            // Gradually change the background gradient from lighter to darker
-            const startColor = { r: 0, g: 51, b: 102 }; // Initial color (light blue)
-            const endColor = { r: 31, g: 66, b: 101 }; // Darker color when scrolled
+// Transition from "Low FPS, High Delay?, Bad Ping?" to "Are you Poor too and cant afford an new PC or Tweaks?"
+setTimeout(() => {
+    fadeOut('text2', 6000);
+    setTimeout(() => fadeIn('text3', 8000), 2000); // 2 seconds cooldown
+}, 6000);
 
-            // Calculate the new color based on scroll position
-            const r = Math.round(startColor.r + (endColor.r - startColor.r) * scrollRatio);
-            const g = Math.round(startColor.g + (endColor.g - startColor.g) * scrollRatio);
-            const b = Math.round(startColor.b + (endColor.b - startColor.b) * scrollRatio);
+// Transition to "Slever."
+setTimeout(() => {
+    fadeOut('text3', 9000);
+    setTimeout(() => fadeIn('text4', 11000), 2000); // 2 seconds cooldown
+}, 9000);
 
-            // Apply the new background gradient dynamically
-            document.body.style.background = `linear-gradient(135deg, rgb(${r}, ${g}, ${b}), rgb(${r - 30}, ${g - 10}, ${b - 10}))`;
-        });
-    </script>
+// Transition to "SleverOS and SleverTweaks"
+setTimeout(() => {
+    fadeOut('text4', 11000);
+    setTimeout(() => fadeIn('text5', 13000), 2000); // 2 seconds cooldown
+}, 11000);
+
+// Countdown timer
+const targetDate = new Date("January 10, 2025 00:00:00 GMT+0200").getTime();
+let countdownTimer = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    if (distance <= 0) {
+        clearInterval(countdownTimer);
+        document.getElementById('timer').innerHTML = "Time's up!";
+    } else {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('timer').innerHTML = `Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+}, 1000);
+
+// Show the timer after "SleverOS and SleverTweaks"
+setTimeout(() => {
+    fadeOut('text5', 16000);
+    fadeIn('timer', 16000);
+}, 16000);
+
+// Show the button 2 seconds after the timer starts
+setTimeout(() => {
+    document.getElementById('redirectBtn').style.display = 'block';
+}, 18000);
+</script>
+
 </body>
 </html>
